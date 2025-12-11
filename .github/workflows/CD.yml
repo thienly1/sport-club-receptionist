@@ -107,14 +107,14 @@ jobs:
           echo "Token length: ${#GHCR_TOKEN}"
           echo "Event: ${{ github.event_name }}"
 
-            - name: Build and push Docker image
-              uses: docker/build-push-action@v5
-              with:
-                context: ./backend
-                push: true
-                tags: |
-                  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:staging
-                  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:staging
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
       # --- Google Cloud Run ---
       # - name: Deploy to Cloud Run
