@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sport-club-receptionist"
+version = "0.1.0"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.isort]
+profile = "black"
+line_length = 120
+skip_gitignore = true
+known_first_party = ["app"]
+known_third_party = ["fastapi", "sqlalchemy", "pydantic", "jose", "passlib", "httpx"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+src_paths = ["src", "test"]
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
