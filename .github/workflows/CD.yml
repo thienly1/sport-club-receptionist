@@ -97,14 +97,14 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Debug Permissions
         run: |
-          echo "Actor: ${{ github.actor }}"
+          echo "Actor: ${{ github.repository_owner }}"
           echo "Repository: ${{ github.repository }}"
-          echo "Token length: ${#GITHUB_TOKEN}"
+          echo "Token length: ${#GHCR_TOKEN}"
           echo "Event: ${{ github.event_name }}"
 
             - name: Build and push Docker image
@@ -149,13 +149,13 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
       - name: Debug Permissions
         run: |
-          echo "Actor: ${{ github.actor }}"
+          echo "Actor: ${{ github.repository_owner }}"
           echo "Repository: ${{ github.repository }}"
-          echo "Token length: ${#GITHUB_TOKEN}"
+          echo "Token length: ${#GHCR_TOKEN}"
           echo "Event: ${{ github.event_name }}"
       - name: Tag image for production
         run: |
